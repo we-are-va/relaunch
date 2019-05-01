@@ -1,61 +1,80 @@
 console.log("Hello!");
 
 
+
 // Test artwork5
-new Vivus('artwork5', { 
-  duration: 1000, 
-  start: 'autostart',
-  pathTimingFunction: Vivus.LINEAR,
-  type: 'sync',
-  file: 'images/artwork5.svg',
-  onReady: function (myVivus) {
-      // `el` property is the SVG element
-     // document.getElementById('artwork4').style.opacity = 1;//('opacity', '1');
-    }
-  }//,
-  //next
-);
+// const myVivus1 = new Vivus('artwork5', { 
+//   duration: 500, 
+//   start: 'autostart',
+//   pathTimingFunction: Vivus.LINEAR,
+//   type: 'sync',
+//   file: '/images/artwork1.svg'
+//   },
+//   //next
+// );
+// const myVivus2 = new Vivus('artwork5', { 
+//   duration: 500, 
+//   start: 'autostart',
+//   pathTimingFunction: Vivus.LINEAR,
+//   type: 'sync',
+//   file: '/images/artwork2.svg'
+//   }//,
+//   //next
+// );
+// const myVivus3 =  new Vivus('artwork5', { 
+//   duration: 500, 
+//   start: 'autostart',
+//   pathTimingFunction: Vivus.LINEAR,
+//   type: 'sync',
+//   file: '/images/artwork1.svg'
+//   }//,
+//   //next
+// );
+
+// myVivus1.play(function() {
+//   myVivus2
+// });
 
 
 // Looping code
-// var index = 1;
-// var max = 6;
-// function run(){
-//   dovivus();
-// }
-// function next( ){
-//   document.getElementById('artwork' + index).style.opacity = 0;
-//   index++;
-//   if(index == max) {
-//     index = 1;
-//     return;  
-//   } else{
-//     dovivus();
-//   }
-// } 
+var index = 1;
+var max = 2;
+function run(){
+  dovivus();
+}
+function next( ){
+  document.getElementById('artwork' + index).style.opacity = 0;
+  index++;
+  if(index == max) {
+    index = 1;
+    return;  
+  } else{
+    dovivus();
+  }
+} 
+  
+function dovivus(){
+  console.log("Do vivus! --> " + index);
+  new Vivus('artwork' + index, { 
+    duration: 1500, 
+    start: 'autostart',
+    pathTimingFunction: Vivus.EASE,
+    type: 'sync', // oneByOne
+    file: '/images/artwork' + index + '.svg',
+    // onReady: function (myVivus) {
+    //     // `el` property is the SVG element
+    //     document.getElementById('artwork' + index).style.opacity = 1;//('opacity', '1');
+    //   }
+    },
+    next
+  );
+} 
 
-// function dovivus(){
-//   console.log("Do vivus! --> " + index);
-//   new Vivus('artwork' + index, { 
-//     duration: 700, 
-//     start: 'autostart',
-//     pathTimingFunction: Vivus.LINEAR,
-//     type: 'oneByOne',
-//     file: 'images/artwork' + index + '.svg',
-//     onReady: function (myVivus) {
-//         // `el` property is the SVG element
-//         document.getElementById('artwork' + index).style.opacity = 1;//('opacity', '1');
-//       }
-//     },
-//     next
-//   );
-// } 
+run();  
 
-// run();  
+// const myVivus = new Vivus('artwork');
 
-//const myVivus = new Vivus('artwork');
-
-//function callback () { console.log('all done'); }
+// function callback () { console.log('all done'); }
 
 // var i;
 // for (i = 1; i < 7; i++) {
@@ -65,7 +84,7 @@ new Vivus('artwork5', {
 //     start: 'autostart',
 //     pathTimingFunction: Vivus.LINEAR,
 //     type: 'oneByOne',
-//     file: 'images/artwork' + i + '.svg' 
+//     file: '/images/artwork' + i + '.svg' 
 //   });
 // }
 

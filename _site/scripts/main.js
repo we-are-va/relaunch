@@ -7,6 +7,7 @@ var max_svgs     = svg_el.length; // Amount of SVGS
 var i = 0, svgs = [];
 var pathType = "sync";
 var duration = 2000;
+var background = "";
 for (i = 0; i < svg_el.length; i++) {
   //console.log(svg_el[i].getAttribute("id"));
   svgs[i] = svg_el[i];
@@ -43,14 +44,15 @@ function animate_svg(){
   svg_el[current_svg].style.opacity = 1;
   
   pathType = svg_el[current_svg].getAttribute("data-path-type");
-  if(!pathType) {
-    pathType = "sync";
-  }
+  if(!pathType) { pathType = "sync"; }
 
-  duration =  svg_el[current_svg].getAttribute("data-duration");
-  if(!duration) {
-    duration = 2000;
-  }
+  duration = svg_el[current_svg].getAttribute("data-duration");
+  if(!duration) { duration = 2000; } 
+
+  background = svg_el[current_svg].getAttribute("data-background");
+  if(background) { document.getElementsByTagName("BODY")[0].style.backgroundColor = "#" + background; }
+  else { document.getElementsByTagName("BODY")[0].style.backgroundColor = "#fff"; }
+
 
   new Vivus(svg_el[current_svg].getAttribute("id"), { 
     duration: duration,

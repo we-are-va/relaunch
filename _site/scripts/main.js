@@ -62,7 +62,7 @@ function animate_svg(){
   //console.log("Reset for " + current_svg + ": " + svg_reset[current_svg]);
 
   myVivus = new Vivus(svg_el[current_svg].getAttribute("id"), {
-      duration: duration,
+      duration: 500,//duration,
       start: 'autostart',
       pathTimingFunction: Vivus.EASE,
       reverseStack: svg_reset[current_svg],

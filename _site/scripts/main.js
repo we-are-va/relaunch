@@ -28,7 +28,7 @@ function next( ){
 
   svg_reset[current_svg] =  svg_reset[current_svg] == true ? false : true;
 
-  myVivus.reset();//.play();
+  myVivus.destroy();//.play();
   // stop for sometime if needed
   setTimeout(function() {
    // svg_el[current_svg].style.opacity = 0;
@@ -62,7 +62,7 @@ function animate_svg(){
   //console.log("Reset for " + current_svg + ": " + svg_reset[current_svg]);
 
   myVivus = new Vivus(svg_el[current_svg].getAttribute("id"), {
-      duration: 500,//duration,
+      duration: duration,
       start: 'autostart',
       pathTimingFunction: Vivus.EASE,
       reverseStack: svg_reset[current_svg],

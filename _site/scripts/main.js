@@ -25,8 +25,9 @@ function sleep(milliseconds) {
 // Go to next SVG
 function next( ){
 
-  svg_el[current_svg].style.opacity = 0;
+ svg_el[current_svg].style.opacity = 0;
 
+  myVivus.reset().play();
   // stop for sometime if needed
   setTimeout(function() {
    // svg_el[current_svg].style.opacity = 0;
@@ -34,13 +35,18 @@ function next( ){
     console.log(current_svg);
     if(current_svg == max_svgs) {
       current_svg = 0;
-    } 
+    }
+   // myVivus.reset();
     animate_svg();
   }, 5000);
+
+
 } 
   
 function animate_svg(){
+
   console.log("Do vivus! --> Artwork #" + current_svg);
+
   svg_el[current_svg].style.opacity = 1;
   
   pathType = svg_el[current_svg].getAttribute("data-path-type");
@@ -54,7 +60,7 @@ function animate_svg(){
   else { document.getElementsByTagName("BODY")[0].style.backgroundColor = "#fff"; }
 
 
-  new Vivus(svg_el[current_svg].getAttribute("id"), { 
+  myVivus = new Vivus(svg_el[current_svg].getAttribute("id"), {
     duration: duration,
     start: 'autostart',
     pathTimingFunction: Vivus.EASE,
@@ -67,6 +73,8 @@ function animate_svg(){
     },
     next
   );
+  myVivus.reset();
+
 } 
 
 // **************** 
